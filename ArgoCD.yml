@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-app
+spec:
+  destination:
+    server: https://127.0.0.1:8080/applications# Replace with your ArgoCD server URL
+    namespace: default
+  project: default
+  source:
+    repoURL: https://github.com/shailednrapali/Kubernetes.git # Replace with your Git repository URL
+    targetRevision: HEAD
+    path: kubernetes/nginx
+  syncPolicy:
+    automated: {}
