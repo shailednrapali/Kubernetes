@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+  labels:
+    app: myapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:  # Move the 'template' field to the same indentation level as 'spec'
+    metadata:
+      name: mynginx
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: mynginx
+          image: nginx:1.7.9
+          ports:
+            - containerPort: 80
+...
